@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+#
+# Function stubs
+#
+sub run   { print "this is 'run'\n";   }
+sub print { print "This is 'print'\n"; }
+sub case0 { print "This is 'case0'\n"; }
+sub case1 { print "This is 'case1'\n"; }
+sub case2 { print "This is 'case2'\n"; }
+
+#
+# Caller
+#
+my $arg;
+foreach $arg (@ARGV) {
+	if ($arg =~ s/^\-\-//) {
+		eval "::$arg";
+		warn "Warning: Could not call '$arg': $@" if $@;
+	} else {
+		warn "Arguments must start with '--'";
+	}
+}
+
+
+# Improvement ideas:
+#	- Consider GetOpt::Long for parsing.
+#	- Add --help for printing usage, because it will be more user-friendly.
+#	- Add parameters to calls (e.g. --case0 42)
+#	- Move functions to separate module
+
