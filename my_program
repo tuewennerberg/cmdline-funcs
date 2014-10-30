@@ -27,6 +27,7 @@ foreach $arg (@ARGV) {
 
 # Improvement ideas:
 #	- Consider GetOpt::Long for parsing.
+#	- Using a lookup table for function names
 #	- Add --help for printing usage, because it will be more user-friendly.
 #	- Add parameters to calls (e.g. --case0 42)
 #	- Move functions to separate module
